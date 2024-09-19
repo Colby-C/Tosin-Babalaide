@@ -242,6 +242,10 @@ button:hover {
     background-color:black;
 }
 
+input[type="text"], input[type="email"], input[type="password"], textarea {
+    border-radius: 0;
+}
+
 #shop-section,
 #contact-section {
     background-color:white;
@@ -279,6 +283,8 @@ button:hover {
         width: 100vw;
         height: auto;
         position: absolute;
+        object-fit: cover;
+        object-position: top;
         top: 50%;
         left: 50%;
         transform: translate(-60%) scale(2);
