@@ -1,0 +1,290 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+@font-face {
+    font-family: 'College-Team';
+    src: url('fmcollegeteam-ayjm-webfont.woff2') format('woff2'),
+         url('fmcollegeteam-ayjm-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'College-Block';
+    src: url('college_block_2.0_d-webfont.woff2') format('woff2'),
+         url('college_block_2.0_d-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Piedmont';
+    src: url('bnpiedmont-webfont.woff2') format('woff2'),
+         url('bnpiedmont-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    background-color:#73000a;
+    font-family: Piedmont;
+    font-size: 30pt;
+    overflow-x: hidden;
+    color:white;
+}
+
+html {
+    scroll-padding-top: 100px;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color:#73000a;
+}
+
+.logo {
+    display: block;
+    max-width: 150px;
+    width: 100%;
+}
+
+.menu {
+    position: sticky;
+    display: flex;
+    top: 0;
+    z-index: 1001;
+    background-color:#73000a;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+}
+
+.menu a {
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s ease;
+}
+
+.menu a:hover {
+    color: black;
+}
+
+.social-left, .social-right {
+    display: flex;
+    align-items: center;
+}
+
+.social-left a img, .social-right a img {
+    width: 40px;
+    transition: filter 0.3s ease;
+}
+
+.social-left a:hover img, .social-right a:hover img {
+    filter: brightness(0) saturate(100%) invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%) contrast(100%);
+}
+
+.image-container {
+    background-color:black;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: sticky;
+    z-index: -1;
+    height: 80vh;
+    background-attachment: fixed;
+}
+
+.image-container::before {
+    background-color:black;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    content: '';
+    position: absolute;
+    z-index: 2;
+    height: 80vh;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 1));
+}
+
+.athlete-photo {
+    position: sticky;
+    width: 100vw;
+    height: auto;
+    display: block;
+    position: absolute;
+    left: 0;
+}
+
+.image-text {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    color:white;
+    font-size: 40px;
+    font-family: Piedmont;
+    text-align: center;
+    align-items: center;
+    z-index: 2;
+}
+
+.image-text p {
+    color:#73000a;
+}
+
+.shop-section {
+    display: flex;
+    flex-direction: column;
+    background-color:white;
+    text-align: center;
+    justify-content: space-evenly;
+    color:#73000a;
+    width: 100%;
+    height: 120vh;
+    overflow: visible;
+    position: relative;
+    z-index: 1;
+}
+
+.contact-section {
+    display: flex;
+    flex-direction: column;
+    background-color:#73000a;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    color:white;
+    width: 100%;
+    height: 120vh;
+    overflow: visible;
+    position: relative;
+    z-index: 1;
+}
+
+.contact-form-section {
+    width: 100%;
+    padding-top: 100px;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: auto;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea,
+button {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid transparent;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: 'Piedmont', sans-serif;
+}
+
+textarea {
+    resize: vertical;
+    height: 200px;
+}
+
+input:focus, 
+textarea:focus, 
+select:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+input, 
+textarea, 
+select {
+    text-transform: uppercase;
+}
+
+button {
+    padding: 10px;
+    color:white;
+    background-color:black;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color:black;
+}
+
+#shop-section,
+#contact-section {
+    background-color:white;
+    padding: 50px 20px;
+    min-height: 100vh;
+}
+
+@media screen and (max-width: 700px) {
+    .menu {
+        padding: 5px 10px;
+        font-size: 40px;
+    }
+
+    .menu a {
+        padding: 5px 10px;
+        font-size: 20px;
+    }
+
+    .logo {
+        max-width: 80px;
+    }
+
+    .image-text {
+        font-size: 5vw;
+    }
+
+    .image-container {
+        height: 60vh;
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+    }
+    
+    .athlete-photo {
+        width: 100vw;
+        height: auto;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-60%) scale(2);
+    }
+
+    .shop-section, .contact-section {
+        padding: 30px 15px;
+    }
+}
