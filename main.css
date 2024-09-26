@@ -194,7 +194,7 @@ img {
 form {
     display: flex;
     flex-direction: column;
-    max-width: 600px;
+    max-width: 800px;
     margin: auto;
 }
 
@@ -203,17 +203,17 @@ input[type="email"],
 input[type="tel"],
 textarea,
 button {
-    padding: 10px;
+    padding: 20px;
     margin: 10px 0;
     border: 1px solid transparent;
     width: 100%;
     box-sizing: border-box;
     font-family: 'Piedmont', sans-serif;
+    font-size: 20pt;
 }
 
 textarea {
     resize: vertical;
-    height: 200px;
 }
 
 input:focus, 
@@ -242,7 +242,7 @@ button:hover {
     background-color:black;
 }
 
-input[type="text"], input[type="email"], input[type="password"], textarea {
+input[type="text"], input[type="tel"], input[type="email"], input[type="password"], textarea {
     border-radius: 0;
 }
 
