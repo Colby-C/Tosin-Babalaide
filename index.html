@@ -49,86 +49,65 @@
         <div class="contact-section">
             <h2>INTERESTED IN WORKING WITH TOSIN BABALAIDE?</h2>
             <div class="contact-form-section">
-                <form action="submit_form.php" method="POST">
+                <form action="send_email.php" method="POST">
                     <input type="text" id="first-name" name="first-name" required placeholder="FIRST NAME">
                     <input type="text" id="last-name" name="last-name" required placeholder="LAST NAME">
                     <input type="text" id="company" name="company" placeholder="COMPANY">
-                    <input type="tel" id="phone" name="PHONE" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="PHONE NUMBER">
+                    <input type="tel" id="phone" name="phone" placeholder="PHONE NUMBER" 
+                    pattern="^\(?([0-9]{3})\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$" 
+                    title="Please enter a valid phone number. Example: 123-456-7890 or (123) 456-7890">
                     <input type="email" id="email" name="email" required placeholder="EMAIL">
                     <textarea id="message" name="message" required placeholder="MESSAGE"></textarea>
                     <button type="submit">SUBMIT</button>
                 </form>
             </div>
         </div>
+
         <script>
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
 
-        targetElement.scrollIntoView({
-            behavior: "smooth"
-        });
-    });
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-        const menu = document.querySelector('.menu'); // Get the sticky menu element
-        const menuHeight = menu.offsetHeight; // Get the height of the sticky menu
-
-        // Add event listener for all anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault(); // Prevent default anchor click behavior
-
-                const targetId = this.getAttribute('href').substring(1); // Get target section ID
-                const targetElement = document.getElementById(targetId); // Get the target section element
-
-                // Get the vertical position of the target element relative to the document
-                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
-
-                // Scroll to the target element with offset for the menu height
-                window.scrollTo({
-                    top: targetPosition - menuHeight, // Adjust position by subtracting the menu height
-                    behavior: 'smooth' // Enable smooth scrolling
+                    targetElement.scrollIntoView({
+                        behavior: "smooth"
+                    });
                 });
             });
-        });
-    });
 
-document.addEventListener('DOMContentLoaded', function() {
-        const phoneInput = document.getElementById('phone');
+            document.addEventListener('DOMContentLoaded', function() {
+                const phoneInput = document.getElementById('phone');
 
-        phoneInput.addEventListener('input', function(e) {
-            let value = e.target.value.replace(/\D/g, '');
-            let formatted = '';
+                phoneInput.addEventListener('input', function(e) {
+                    let value = e.target.value.replace(/\D/g, '');
+                    let formatted = '';
 
-            if (value.length > 0) {
-                formatted = '(' + value.substring(0, 3);
-            }
-            if (value.length >= 4) {
-                formatted += ') ' + value.substring(3, 6);
-            }
-            if (value.length >= 7) {
-                formatted += '-' + value.substring(6, 10);
-            }
+                    if (value.length > 0) {
+                        formatted = '(' + value.substring(0, 3);
+                    }
+                    if (value.length >= 4) {
+                        formatted += ') ' + value.substring(3, 6);
+                    }
+                    if (value.length >= 7) {
+                        formatted += '-' + value.substring(6, 10);
+                    }
 
-            e.target.value = formatted;
-        });
-    });
+                    e.target.value = formatted;
+                });
+            });
 
-document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('DOMContentLoaded', function() {
                 const textareas = document.querySelectorAll('textarea');
 
                 textareas.forEach(textarea => {
+                    textarea.setAttribute('style', 'height:' + textarea.scrollHeight + 'px;overflow-y:hidden;');
                     textarea.addEventListener('input', function() {
                         this.style.height = 'auto';
-                        this.style.height = this.scrollHeight + 'px';
+                        this.style.height = (this.scrollHeight) + 'px';
                     });
                 });
             });
         </script>
     </body>
 </html>
-
