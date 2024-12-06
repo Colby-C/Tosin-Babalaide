@@ -1,4 +1,11 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'PHPMailer/PHPMailer.php';
+require 'PHPMailer/SMTP.php';
+require 'PHPMailer/Exception.php';
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $firstName = htmlspecialchars($_POST['first-name']);
     $lastName = htmlspecialchars($_POST['last-name']);
@@ -7,21 +14,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = htmlspecialchars($_POST['email']);
     $message = htmlspecialchars($_POST['message']);
 
-    $to = "Austin@prolifiqsports.com";
+    $mail = new PHPMailer(true);
+    try {
+        $mail->isSMTP();
+        $mail->Host = 'smtp.mailtrap.io'; // Mailtrap SMTP
+        $mail->SMTPAuth = true;
+        $mail->Username = 'your_mailtrap_username'; // From Mailtrap
+        $mail->Password = 'your_mailtrap_password'; // From Mailtrap
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port = 587;
 
-    $subject = "New Message from $firstName $lastName";
-    $body = "Name: $firstName $lastName\n";
-    $body .= "Company: $company\n";
-    $body .= "Phone: $phone\n";
-    $body .= "Email: $email\n";
-    $body .= "Message: $message\n";
+        $mail->setFrom('noreply@example.com', 'Your Name');
+        $mail->addAddress('Austin@prolifiqsports.com');
 
-    $headers = "From: $email";
+        $mail->Subject = "New Message from $firstName $lastName";
+        $mail->Body = "Name: $firstName $lastName\nCompany: $company\nPhone: $phone\nEmail: $email\nMessage: $message";
 
-    if (mail($to, $subject, $body, $headers)) {
+        $mail->send();
         echo "Message sent!";
-    } else {
-        echo "Sorry, something went wrong. Please try again.";
+    } catch (Exception $e) {
+        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
 }
 ?>
