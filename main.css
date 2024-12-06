@@ -297,7 +297,6 @@ input[type="text"], input[type="tel"], input[type="email"], input[type="password
         top: 55%;
         left: 50%;
         transform: translate(-50%) scale(3);
-        transform: scale(calc(1 + (1200px - 100vw) / 2000));
     }
 
     .shop-section, .contact-section {
